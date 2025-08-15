@@ -13,3 +13,5 @@ psycopg==3.2.9
 sqlparse==0.5.3
 tzdata==2025.2
 Werkzeug==3.1.3
+
+
