@@ -91,11 +91,28 @@ DATABASES = {
         'PORT': env('DB_PORT', default='5433'),
       },
 
+
+ # crear otra instancia co nlas credenciales de supabase
+   
+   
     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': env('SUPA_HOST', default='aws-1-us-east-2.pooler.supabase.com'),
+        'NAME': env('SUPA_NAME'), 
+        'USER': env('SUPA_USER'),
+       
+        'PASSWORD': env('SUPA_PASSWORD'),
+        'PORT': env('SUPA_PORT', default='6543'),
+      },
+
+       
+
+    'local1': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'banking.sqlite3',
     }
 }
+  
   
 
 
