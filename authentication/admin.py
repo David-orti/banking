@@ -9,3 +9,11 @@ admin.site.register(User)
 
 
 
+class CountryAdmin(admin.ModelAdmin):
+    display_data = ('name', 'abrev','get_status')
+
+    def get_status(self, obj):
+        return "Active" if obj.status else "Inactive"
+    get_status.short_description = 'Status' #tabla label
+    
+

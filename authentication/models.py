@@ -5,9 +5,9 @@ class Country(models.Model):
     abrev = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=True, blank=True)
     def __str__(self):
-        return f"{self.name} {self.abrev}"
+        return f"{self.name} {self.abrev} {'Active' if self.status else 'Inactive'}"
 
 
 class Department(models.Model):
@@ -17,7 +17,7 @@ class Department(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=True, blank=True)
 
 class City(models.Model):
     name = models.CharField(max_length=50)
@@ -25,7 +25,7 @@ class City(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="cities")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=True, blank=True)
 
 
 class User(models.Model):
@@ -40,7 +40,7 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=True, blank=True)
 
 
 
