@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Listado de Países{% endblock %}
+{% block content %}
+  <h1>Listado de Países</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Abrev.</th>
+        <th>Activo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in countries %}
+      <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.name }}</td>
+        <td>{{ c.abrev }}</td>
+        <td>{% if c.status %}Sí{% else %}No{% endif %}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4">No hay países registrados.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,11 +1,17 @@
 from django.db import models
 
 class Country(models.Model):
-    name = models.CharField(max_length=100)
-    abrev = models.CharField(max_length=10)
+    name = models.CharField(max_length=100) # Evita duplicados
+    abrev = models.CharField(max_length=10)  # Permite vacío
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True, blank=True)
+    
+    class Meta:
+        verbose_name = "Country"
+        verbose_name_plural = "Countries"
+        ordering = ['name'] # Ordenar alfabéticamente por nombre
+
     def __str__(self):
         return f"{self.name} {self.abrev} {'Active' if self.status else 'Inactive'}"
 
