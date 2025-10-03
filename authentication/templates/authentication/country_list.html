@@ -2,6 +2,12 @@
 {% block title %}Listado de Países{% endblock %}
 {% block content %}
   <h1>Listado de Países</h1>
+
+  <!-- Botón para registrar un nuevo país -->
+  <div class="mb-3">
+    <a class="btn btn-success" href="{% url 'authentication:country_create' %}">+ Nuevo País</a>
+  </div>
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -9,6 +15,7 @@
         <th>Nombre</th>
         <th>Abrev.</th>
         <th>Activo</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -18,9 +25,15 @@
         <td>{{ c.name }}</td>
         <td>{{ c.abrev }}</td>
         <td>{% if c.status %}Sí{% else %}No{% endif %}</td>
+        <td>
+          <!-- Editar -->
+          <a href="{% url 'authentication:country_edit' c.id %}" class="btn btn-warning btn-sm">Editar</a>
+          <!-- Eliminar -->
+          <a href="{% url 'authentication:country_delete' c.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+        </td>
       </tr>
       {% empty %}
-      <tr><td colspan="4">No hay países registrados.</td></tr>
+      <tr><td colspan="5">No hay países registrados.</td></tr>
       {% endfor %}
     </tbody>
   </table>

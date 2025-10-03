@@ -10,5 +10,3 @@ class CountryForm(forms.ModelForm):
             'abrev': forms.TextInput(attrs={'class': 'form-control'}),
             'status': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
-# ¿Quieres que te ayude a agregar un botón “+ Nuevo País” y un enlace “Editar” en esa tabla?
-#Así podrás crear y modificar países desde la interfaz.

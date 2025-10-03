@@ -5,6 +5,8 @@ from .models import Country
 from .forms import CountryForm
 
 
+
+
 # 🔹 Vista de prueba (la que ya tenías)
 def index(request):
     return HttpResponse("this is my first view !!!")
@@ -41,3 +43,11 @@ def country_edit(request, pk):
     else:
         form = CountryForm(instance=country)
     return render(request, 'authentication/country_form.html', {'form': form, 'country': country})
+# 🔹 Vista para eliminar país
+def country_delete(request, pk):
+    country = get_object_or_404(Country, pk=pk)
+    if request.method == 'POST':  # confirmación
+        country.delete()
+        messages.success(request, 'País eliminado correctamente.')
+        return redirect('authentication:country_list')
+    return render(request, 'authentication/country_confirm_delete.html', {'country': country})
