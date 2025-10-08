@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import Country, Department, City, User
 
 
-# ✅ Registrar Country con una clase personalizada
+
+#  Registrar Country con una clase personalizada
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'abrev', 'get_status', 'created_at', 'updated_at')
@@ -14,12 +15,13 @@ class CountryAdmin(admin.ModelAdmin):
     get_status.short_description = 'Status'  # etiqueta de la columna
 
 
-# ✅ Registrar los demás modelos (básico)
+#  Registrar los demás modelos (básico)
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'abrev', 'country', 'status')
     list_filter = ('status', 'country')
     search_fields = ('name', 'abrev')
+
 
 
 @admin.register(City)

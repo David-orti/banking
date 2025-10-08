@@ -3,6 +3,7 @@ from . import views
 
 app_name = "authentication"
 
+
 urlpatterns = [
     path("", views.index, name="index"),
     path("countries/", views.country_list, name="country_list"),
