@@ -28,7 +28,7 @@
         <td>{% if c.status %}Sí{% else %}No{% endif %}</td>
         <td>
           <!-- Editar -->
-          <a href="{% url 'authentication:country_edit' c.id %}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="{% url 'authentication:country_edit' c.id %}" class="btn btn-primary btn-sm">Editar</a>
           <!-- Eliminar -->
           <a href="{% url 'authentication:country_delete' c.id %}" class="btn btn-danger btn-sm">Eliminar</a>
         </td>
